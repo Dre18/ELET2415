@@ -75,3 +75,15 @@ def page_not_found(error):
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port="8080")
+
+
+@app.route('/text', methods=["GET","POST"]) 
+def about():
+    """Returns text""" 
+    if request.method == "GET": 
+        # Process GET requests 
+        return "Hello World!." 
+    if request.method == "POST": 
+        # Process POST requests 
+        return "Hello World!." 
+    return render_template('404.html'), 404
