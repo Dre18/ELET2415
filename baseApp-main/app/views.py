@@ -4,8 +4,11 @@ Jinja2 Documentation:    http://jinja.pocoo.org/2/documentation/
 Werkzeug Documentation:  http://werkzeug.pocoo.org/documentation/
 This file creates your application.
  """
+ 
+from os import getcwd 
+from os.path import join
 from app import app 
-from flask import render_template, request, redirect, url_for, flash,  session,  send_from_directory,  abort 
+from flask import render_template, request, redirect, url_for, flash,  session,  send_from_directory,  abort, jsonify
 from werkzeug.utils import secure_filename 
 from werkzeug.security import check_password_hash
  
@@ -78,7 +81,7 @@ if __name__ == '__main__':
 
 
 @app.route('/text', methods=["GET","POST"]) 
-def about():
+def test():
     """Returns text""" 
     if request.method == "GET": 
         # Process GET requests 
@@ -86,4 +89,29 @@ def about():
     if request.method == "POST": 
         # Process POST requests 
         return "Hello World!." 
+    return render_template('404.html'), 404
+
+
+
+@app.route('/json', methods=["GET","POST"]) 
+def json_object(): 
+    """Returns Json object""" 
+    if request.method == "GET": 
+        # Process GET requests 
+        message = {"status":"GET request received"} 
+        return jsonify(message) 
+    if request.method == "POST": 
+        # Process POST requests 
+        message = {"status":"POST request received"} 
+        return jsonify(message) 
+    return render_template('404.html'), 404
+
+
+@app.route('/file/<name>', methods=["GET"]) 
+def file_stored(name): 
+    """Returns a file""" 
+    if request.method == "GET": 
+        # Process GET requests 
+        path = join( getcwd(),Config.SYSFILES) 
+        return send_from_directory( path, name) 
     return render_template('404.html'), 404
