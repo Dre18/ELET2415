@@ -1,0 +1,11 @@
+.aboutblock {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 900px;
+}
+.aboutblock img {
+  max-width: 400px;
+  width: 100%;
+}/*# sourceMappingURL=about.css.map */

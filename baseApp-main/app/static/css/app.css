@@ -1,0 +1,8 @@
+main {
+  width: 100vw;
+  min-height: 900px;
+  padding: 50px 0;
+}
+main .container {
+  max-width: 1200px;
+}/*# sourceMappingURL=app.css.map */

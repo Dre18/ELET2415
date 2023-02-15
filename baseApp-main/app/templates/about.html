@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+ 
+{% block css_js %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}"> 
+<link rel="stylesheet" href="{{ url_for('static', filename='js/about.js') }}">
+{% endblock %}
+
+{% block main %}
+
+<div class="aboutblock">
+    <h1>About</h1>
+    <img id="aboutimage" src="{{url_for('static',filename='images/undraw_experience_design_re_dmqq.svg')}}" alt=""> 
+    <p>This webpage is about {{ name }}.</p> 
+</div>
+
+{% endblock %}
+
+
+
+{% comment %} {% extends "base.html" %} 
+
+{% block css_js %} 
+<link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}"> 
+<link rel="stylesheet" href="{{ url_for('static', filename='js/about.js') }}"> 
+{% endblock %}
+
+{% block main %} 
+<div class="aboutblock"> 
+    <h1>About</h1> 
+    <img id="aboutimage" src="{{url_for('static',filename='images/undraw_experience_design_re_dmqq.svg')}}" alt=""> 
+    <p>This webpage is about {{ name }}.</p> 
+</div> 
+
+{% endblock %} {% endcomment %}
+
