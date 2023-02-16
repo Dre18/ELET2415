@@ -7,7 +7,7 @@ This file creates your application.
  
 from os import getcwd 
 from os.path import join
-from app import app 
+from app import app, Config 
 from flask import render_template, request, redirect, url_for, flash,  session,  send_from_directory,  abort, jsonify
 from werkzeug.utils import secure_filename 
 from werkzeug.security import check_password_hash
@@ -114,4 +114,39 @@ def file_stored(name):
         # Process GET requests 
         path = join( getcwd(),Config.SYSFILES) 
         return send_from_directory( path, name) 
+    return render_template('404.html'), 404
+
+
+@app.route('/sum/<firstnumber>/<secondnumber>', methods=["GET"]) 
+def sumTwoNumbers(firstnumber, secondnumber): 
+    """Return the Sum of two numbers""" 
+    if request.method == "GET":
+        # Process GET requests 
+        summedNumbers = int(firstnumber) + int(secondnumber) 
+        return f"The sum of {firstnumber} and {secondnumber} is {summedNumbers}" 
+    return render_template('404.html'), 404
+
+       
+@app.route('/sum', methods=["GET"]) 
+def sum2Numbers(): 
+    """Return the Sum of two numbers""" 
+    if request.method == "GET": 
+        # Process GET requests 
+        num1 = request.args.get("number1") 
+        num2 = request.args.get("number2") 
+        summedNumbers = int(num1) + int(num2) 
+        return f"The sum of {num1} and {num2} is {summedNumbers}" 
+    return render_template('404.html'), 404
+
+
+@app.route('/mul', methods=["POST"]) 
+def mul2Numbers(): 
+    """Return the Product of two numbers""" 
+    if request.method == "POST":
+        # Process GET requests 
+        data = request.get_json() 
+        num1 = data["number1"] 
+        num2 = data["number2"] 
+        mulNumbers = int(num1) * int(num2) 
+        return f"The product of {num1} and {num2} is {mulNumbers}" 
     return render_template('404.html'), 404
