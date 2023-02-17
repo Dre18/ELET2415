@@ -150,3 +150,10 @@ def mul2Numbers():
         mulNumbers = int(num1) * int(num2) 
         return f"The product of {num1} and {num2} is {mulNumbers}" 
     return render_template('404.html'), 404
+
+
+
+@app.route('/calc') 
+def calc(): 
+    """Render website's calc page.""" 
+    return render_template('calc.html')
