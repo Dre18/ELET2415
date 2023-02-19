@@ -1,0 +1,134 @@
+
+.calcblock
+{
+    display: flex; 
+    flex-direction: row;
+    gap: 50px;
+   
+}
+
+.left_box
+{
+    background-color: #ffffff;
+    width: 380px ;
+    height: 200px; 
+    border: 1px solid #1ECBE1; 
+    padding: 1px; 
+    margin: 1px;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+
+}
+.titlebox
+{
+    width: 100%;
+    height: 15%;
+    background-color: #90a5a7;
+    font-size: 20px;
+    
+    
+    display: flex; 
+    justify-content: start;
+    align-items: center;
+
+
+}
+
+.sum_opp
+{
+    width: 100%;
+    height: 85%;
+    background-color: #1e428c;
+    
+    border-radius: 10px;
+    display: flex; 
+    flex-direction: row;
+    row-gap: 25px;
+   
+
+}
+#number1
+{
+    width: 120px;
+    border-radius: 7px;
+    padding: 1px; 
+    margin: 20px;
+    
+}
+
+#number2
+{
+    width: 120px;
+    border-radius: 7px;
+    padding: 1px; 
+    margin: 20px;
+}
+
+.mid_box
+{
+    background-color: #ffffff;
+    width: 380px ;
+    height: 200px; 
+    border: 1px solid #1ECBE1; 
+    padding: 1px; 
+    margin: 1px;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+.mul_opp
+{
+    width: 100%;
+    height: 85%;
+    background-color: #1e428c;
+    
+    border-radius: 10px;
+    display: flex; 
+    flex-direction: row;
+    row-gap: 25px;
+   
+
+}
+
+.right_box
+{
+    background-color: #ffffff;
+    width: 200px ;
+    height: 200px; 
+    border: 1px solid #1ECBE1; 
+    padding: 1px; 
+    margin: 1px;
+    border-radius: 10px;
+
+ 
+
+}
+
+
+.temp_opp
+{
+    width: 100%;
+    height: 85%;
+    background-color: #1e428c;
+    
+    border-radius: 10px;
+    display: flex; 
+    flex-direction: row;
+    row-gap: 25px;
+   
+
+}
+#number
+{
+    width: 120px;
+    border-radius: 7px;
+    padding: 1px; 
+    margin: 20px;
+    
+}
