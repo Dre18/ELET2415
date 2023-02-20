@@ -2,7 +2,7 @@
  
 {% block css_js %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/calc.css') }}"> 
-<link rel="stylesheet" href="{{ url_for('static', filename='js/calc.js') }}">
+<script src ="{{ url_for('static', filename='js/calc.js') }}"></script>
 {% endblock %}
 
 {% block main %}
@@ -21,7 +21,7 @@
                 <input type="text" id="number1" name = "number1" /> 
                 <label>+</label>
                 <input type="text" id="number2" name = "number2"/>
-                <p>Answer: <script>"calc.js"</script></p>
+                <p>Answer: </p>
                 </div>
                 <button type="submit">Submit</button>
                </form> 
@@ -32,12 +32,12 @@
     </div>   
   
     <div class = "mid_box">
-        <div class = "titlebox">
+        <div class = "titlebox2">
             <h6>Product of two integers</h6>
             
         </div>
         <div class = "mul_opp">
-            <form action="/sum" method="get">
+            <form action="/mul" method="post">
                 <div>
                 <label for="number1"></label>
                 <label for="number2"></label>
@@ -45,6 +45,7 @@
                 <label>x</label>
                 <input type="text" id="number2" name = "number2"/>
                 <p>Answer: </p>
+                
                 </div>
                 <button type="submit">Submit</button>
                </form> 
@@ -60,7 +61,7 @@
             
         </div>
         <div class = "temp_opp">
-            <form action="/temp" method="get">
+            <form action="/temp" method="post">
                 <div>
                 <label for="number"></label>
                 <input type="text" id="number" name = "number" /> 
@@ -77,4 +78,7 @@
 </div>
 
 {% endblock %}
+
+
+
 

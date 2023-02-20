@@ -151,15 +151,15 @@ def mul2Numbers():
         return f"The product of {num1} and {num2} is {mulNumbers}" 
     return render_template('404.html'), 404
 
-@app.route('/temp', methods=["GET"]) 
+@app.route('/temp', methods=["POST"]) 
 def temptF(): 
     """Return""" 
-    if request.method == "GET":
+    if request.method == "POST":
         # Process GET requests 
         data = request.get_json() 
         num1 = data["number"] 
-        ftemp = (int(num1) * 9/5) + 32
-        return f"{num1}°C is {ftemp}°F" 
+        ftemptF = ((int(num1) * 9/5) + 32)
+        return f"{num1}°C is {ftemptF}°F" 
     return render_template('404.html'), 404
 
 
