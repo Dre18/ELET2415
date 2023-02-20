@@ -21,6 +21,12 @@
     flex-direction: column;
 
 }
+.Submitbtn
+{
+    display: flex; 
+    flex-direction: row; 
+    justify-content: start;
+}
 .titlebox
 {
     width: 100%;
@@ -40,7 +46,7 @@
 {
     width: 100%;
     height: 85%;
-    background-color: #1e428c;
+    /* background-color: #1e428c; */
     
     border-radius: 10px;
     display: flex; 
@@ -65,7 +71,22 @@
     padding: 1px; 
     margin: 20px;
 }
+#Mnumber1
+{
+    width: 120px;
+    border-radius: 7px;
+    padding: 1px; 
+    margin: 20px;
+    
+}
 
+#Mnumber2
+{
+    width: 120px;
+    border-radius: 7px;
+    padding: 1px; 
+    margin: 20px;
+}
 .mid_box
 {
     background-color: #ffffff;
@@ -79,6 +100,15 @@
     display: flex;
     flex-direction: column;
 
+}
+
+.SubmitbtnMul
+{
+    display: flex; 
+    flex-direction: row; 
+    justify-content: center;
+    /* align-items: center; */
+    background-color: #1ECBE1;
 }
 .titlebox2
 {
@@ -99,7 +129,7 @@
 {
     width: 100%;
     height: 85%;
-    background-color: #1e428c;
+    /* background-color: #1e428c; */
     
     border-radius: 10px;
     display: flex; 
@@ -128,7 +158,7 @@
 {
     width: 100%;
     height: 85%;
-    background-color: #1e428c;
+    /* background-color: #1e428c; */
     
     border-radius: 10px;
     display: flex; 

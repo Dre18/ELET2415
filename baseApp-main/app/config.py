@@ -10,3 +10,7 @@ class Config(object):
     FLASK_RUN_PORT  = os.environ.get('FLASK_RUN_PORT') 
     FLASK_RUN_HOST  = os.environ.get('FLASK_RUN_HOST') 
     SYSFILES = os.environ.get("SYSFILES") 
+    DB_USERNAME="msojAdmin" 
+    DB_PASSWORD="iUUofDcSkAndou5L62cCpZ4Ue7725QT6G95N" 
+    DB_SERVER="localhost" 
+    DB_PORT=27017
