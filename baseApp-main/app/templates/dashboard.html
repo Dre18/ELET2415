@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+ 
+{% block css_js %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}"> 
+
+<script src ="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+<script src ="{{ url_for('static', filename='js/mqttws31.js') }}"></script>
+{% endblock %}
+
+{% block main %}
+
+<div class="dashboardblock">
+    <div class="header"> 
+        <h1>Home Automation Dashboard</h1>
+        </div> 
+        <hr> 
+        <div id="messages">
+
+        </div>
+        <div id="status"></div>
+        <hr> 
+        
+
+        <div class="controls">
+            <h1>Controls</h1>
+            <ul class="dashboard"> 
+        
+            <li class="dashboard_item kitchen"> 
+                <h4>Kitchen</h4>
+                <button>Toggle</button>
+                <img src="{{url_for('static',filename='images/bulboff.png')}}" alt=""  
+                
+                width = "50"
+                height="60"/>
+                
+                <p>OFF</p>                    
+            </li> 
+
+            <li class = "dashboard_item bathroom">
+                <h4>Bathroom</h4>
+                <button>Toggle</button>
+                <img src="{{url_for('static',filename='images/bulboff.png')}}" alt=""  
+                width = "50"
+                height="60"/>
+                <p>OFF</p>
+                </li>
+
+            <li class="dashboard_item livingroom"> 
+                <h4>LivingRoom</h4> 
+                <button>Toggle</button>
+                <img src="{{url_for('static',filename='images/bulboff.png')}}" alt=""  
+                width = "50"
+                height="60"/>
+                <p>OFF</p>
+                 </li> 
+
+            <li class="dashboard_item hall"> 
+                <h4>Hall</h4>
+                <button>Toggle</button>
+                <img src="{{url_for('static',filename='images/bulboff.png')}}" alt="" 
+                width = "50"
+                height="60"/>
+                <p>OFF</p>
+                </li> 
+
+            <li class="dashboard_item studyRoom"> 
+                <h4>StudyRoom</h4>
+                <button>Toggle</button>
+                <img src="{{url_for('static',filename='images/bulboff.png')}}" alt="" 
+                width = "50"
+                height="60"/>
+                <p>OFF</p>
+                </li> 
+
+            <div class="dashboard_item bedRoom"> 
+                <h4>BedRoom</h4> 
+                <button>Toggle</button>
+                <img src="{{url_for('static',filename='images/bulboff.png')}}" alt=""  
+                width = "50"
+                height="60"/>
+                <p>OFF</p>
+                </div> 
+            
+
+
+                <li class="dashboard_item frontdoor"> 
+                <h3>Front Door</h3> 
+                <img src="{{url_for('static',filename='images/doorclosed.png')}}" alt="" 
+                width = "45"
+                height="50"/>
+                <p>CLOSED</p>  
+                </li> 
+
+            <li class="dashboard_item balcony_door"> 
+                
+                    <h3>Balcony Door</h3> 
+                    <img src="{{url_for('static',filename='images/doorclosed.png')}}" alt=""
+                    width = "45"
+                    height="50"/>
+                    <p></p> 
+                    </li> 
+
+            </ul> 
+            
+    </div>
+</div>
+
+{% endblock %}
+

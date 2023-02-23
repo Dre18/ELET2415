@@ -167,3 +167,8 @@ def temptF():
 def calc(): 
     """Render website's calc page.""" 
     return render_template('calc.html')
+
+@app.route('/dashboard') 
+def dashboard(): 
+    """Render website's calc page.""" 
+    return render_template('dashboard.html')
