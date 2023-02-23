@@ -6,4 +6,5 @@ app = Flask(__name__)
 app.config.from_object(Config)
  
 
-from app import views 
+from app import views
+from app import app, Config, Mqtt 

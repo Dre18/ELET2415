@@ -2,12 +2,21 @@
  
 {% block css_js %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}"> 
+<script src="https://code.highcharts.com/highcharts.js"></script> 
+<script src="https://code.highcharts.com/modules/series-label.js"></script> 
+<script src="https://code.highcharts.com/modules/exporting.js"></script> 
+<script src="https://code.highcharts.com/modules/export-data.js"></script> 
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
 <script src ="{{ url_for('static', filename='js/dashboard.js') }}"></script>
 <script src ="{{ url_for('static', filename='js/mqttws31.js') }}"></script>
 {% endblock %}
 
 {% block main %}
+
+<figure class="highcharts-figure"> 
+    <div id="livedata"></div> 
+</figure>
 
 <div class="dashboardblock">
     <div class="header"> 
@@ -28,8 +37,7 @@
             <li class="dashboard_item kitchen"> 
                 <h4>Kitchen</h4>
                 <button>Toggle</button>
-                <img src="{{url_for('static',filename='images/bulboff.png')}}" alt=""  
-                
+                <img src="{{url_for('static',filename='images/bulboff.png')}}" alt="" 
                 width = "50"
                 height="60"/>
                 
@@ -103,6 +111,15 @@
             </ul> 
             
     </div>
+    <div class="date"><span>Start</span> 
+        <input id="start" type="date" placeholder="Start"> 
+        <span>End</span> 
+        <input id="end" type="date" placeholder="End"> 
+        <button class="plot">Plot</button>
+    </div> 
+    <figure class="highcharts-figure"> 
+        <div id="container"></div> 
+    </figure>
 </div>
 
 {% endblock %}

@@ -7,11 +7,12 @@ This file creates your application.
  
 from os import getcwd 
 from os.path import join
-from app import app, Config 
+from app import app, Config, DB 
 from flask import render_template, request, redirect, url_for, flash,  session,  send_from_directory,  abort, jsonify
 from werkzeug.utils import secure_filename 
 from werkzeug.security import check_password_hash
- 
+from .function import DB, Mqtt
+mongo = DB(Config) 
 
 ###
 # Routing for your application.
@@ -172,3 +173,16 @@ def calc():
 def dashboard(): 
     """Render website's calc page.""" 
     return render_template('dashboard.html')
+
+
+@app.route('/data', methods=["GET"]) 
+def data(): 
+    """ Return data """ 
+    if request.method == "GET": 
+        # Process GET requests 
+        VARIABLE = request.args.get("variable") 
+        START = int(request.args.get("start")) 
+        END = int(request.args.get("end")) 
+        data = mongo.plotStaticGraph(VARIABLE,START, END) 
+        return jsonify(data) 
+    return render_template('404.html'), 404

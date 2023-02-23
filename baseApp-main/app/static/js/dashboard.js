@@ -9,6 +9,8 @@ window.onload = (event) => {
   var subtopic            = "620108055";            //Replace with your ID number ex. 620012345. MQTT topic for subscribing to
   var host                = "www.yanacreations.com";  // MQTT HOST
   var port                = 8883;                     // MQTT Port
+
+
   // var state = 12;
   /* HTML ELEMENT SELECTORS */
   // Query selector objects used to manipulate HTML elements
@@ -44,9 +46,137 @@ window.onload = (event) => {
 
   let bedroomCard       = document.querySelector(".bedRoom > p");
   let bedroomCardBtn        = document.querySelector(".bedRoom > button");
- 
 
+  let limit                 = 10;
+  let elevationData         = [];
+ 
+  start = document.querySelector("#start"); 
+  end = document.querySelector("#end"); 
+  plotBtn = document.querySelector(".plot");
   /* EVENT LISTENERS */
+
+
+  // Add event listener which sends fetch request to server once plot button is clicked 
+  plotBtn.addEventListener("click", async ()=>{ 
+    let starttime = new Date(start.value).getTime() / 1000; 
+    let endtime = new Date(end.value).getTime() / 1000; 
+    // Request data from server 
+    const URL = `/data?start=${starttime}&end=${endtime}&variable=TEMPERATURE`; 
+    const response = await fetch(URL); 
+    if(response.ok){ 
+      let res = await response.json(); 
+      elevationData = [...res]; 
+      //Print data received to console 
+      console.log(elevationData); 
+      // Render plot with received data 
+      graph.update({ series: [{ data: res, lineColor: Highcharts.getOptions().colors[1], 
+        color: Highcharts.getOptions().colors[2], 
+        fillOpacity: 0.5, name: 'Temperature', 
+        marker: { enabled: false }, 
+        threshold: null }] 
+      });
+     } 
+    });
+
+
+    /* GRAPH */ 
+    graph = Highcharts.chart('container', {
+       chart: { 
+        type: 'area', 
+        zoomType: 'x', 
+        panning: true, 
+        panKey: 'shift', 
+        scrollablePlotArea: { 
+          minWidth: 600 
+    } 
+  }, 
+    title: {
+       text: 'Average Outside Temperature', 
+       align: 'center' 
+      },
+      xAxis: { 
+        type: "datetime" 
+      }, 
+      yAxis: { 
+        startOnTick: true, 
+        endOnTick: false, 
+        maxPadding: 0.35, 
+        title: {
+          text: null 
+        }, 
+        labels: { 
+          format: '{value} °C' 
+        } }, 
+        tooltip: { 
+          // headerFormat: 'Distance: {point.x:.1f} km<br>', 
+          pointFormat: '{point.y:.1f} °C', 
+          shared: true 
+        }, legend: { 
+          enabled: false 
+        }, 
+        series: [{ 
+          data: elevationData, lineColor: Highcharts.getOptions().colors[1], 
+          color: Highcharts.getOptions().colors[2], 
+          fillOpacity: 0.5, 
+          name: 'Temperature', 
+          marker: { 
+            enabled: false 
+          }, 
+          threshold: null 
+        }] 
+      });
+
+
+      // Render live Graph 
+      liveGraph = Highcharts.chart('livedata', { 
+        chart: { 
+          type: 'spline', 
+          zoomType: 'x', 
+          panning: true, 
+          panKey: 'shift', 
+          scrollablePlotArea: { 
+            minWidth: 600 
+          } 
+        }, 
+        title: 
+        { 
+          text: 'Live Temperature Data', 
+          align: 'center' 
+        }, 
+        xAxis: { 
+          type: "datetime" 
+        }, 
+        yAxis: { 
+          startOnTick: true, 
+          endOnTick: false, 
+          maxPadding: 0.35, 
+          title: { 
+            text: null 
+          }, 
+          labels: { 
+            format: '{value} °C' } 
+          }, 
+          tooltip: { 
+            // headerFormat: 'Distance: {point.x:.1f} km<br>', 
+            pointFormat: '{point.y:.1f} °C', 
+            shared: true 
+          }, 
+          legend: { 
+            enabled: false 
+          }, 
+          series: [{ 
+            data: [], 
+            lineColor: Highcharts.getOptions().colors[3], 
+            color: Highcharts.getOptions().colors[2], 
+            fillOpacity: 0.5, 
+            name: 'Temperature', 
+            marker: { 
+              enabled: false 
+            }, 
+            threshold: null 
+          }]
+         });
+
   livingroomCardBtn.addEventListener("click",()=>{ 
     console.log("livingroom Button clicked");
 
@@ -110,6 +240,16 @@ window.onload = (event) => {
         // Convert message received to json object
         let mssg  = JSON.parse(r_message.payloadString); 
 
+        let timestamp = mssg.TIMESTAMP; 
+        let temperature = mssg.TEMPERATURE; 
+        if(limit > 0){ 
+          liveGraph.series[0].addPoint({y:parseFloat(temperature) ,x:((parseInt(timestamp) - 18000 )*1000) }, true, false); 
+          limit--; 
+        } 
+        else
+        { 
+          liveGraph.series[0].addPoint({y:parseFloat(temperature) ,x:((parseInt(timestamp) - 18000 )*1000) }, true, true); 
+        }
         // Print json message to console(View in Browser Dev Tools)
         console.log(mssg); 
 
