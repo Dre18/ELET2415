@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 from app import app, Config, Mqtt
 #from .config import Config
+# from app import app, Config, Mqtt
 
 print(Config.FLASK_RUN_PORT)
 Client = Mqtt("620108055","localhost",1883)

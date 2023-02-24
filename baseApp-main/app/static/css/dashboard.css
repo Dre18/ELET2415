@@ -1,6 +1,6 @@
 body 
 { 
-    background-color: #0d0c0cc9; 
+    background-color: #23b0ec56; 
     
     text-align: center; 
     font-family: 'Roboto', sans-serif; 
@@ -8,26 +8,28 @@ body
 } 
 .header
 { 
-    background-color: rgb(253, 23, 7); 
+    background-color: rgba(7, 204, 253, 0.471); 
     height: 100px; 
     display: flex; 
     justify-content: center; 
     align-items: center; 
+    box-shadow: 0 1px 30px rgba(2, 1, 1, 0.934), 0 5px 20px rgba(0,0,0,0.24); 
 } 
+
 .dashboard
 { 
     display: flex;
     gap: 30px;
     flex-wrap: wrap; 
-    flex-direction: column;
+    flex-direction: row;
     row-gap:30px ;
-    /* opacity: 75%; */
+    opacity: 75%;
 } 
 .dashboard_item
 { 
-    width: 130px; 
-    height: 150px; 
-    background: #e6fe0e; 
+    width: 200px; 
+    height: 200px; 
+    background: #0ef3ffc3; 
     color: black; 
     padding: 16px; 
     border-radius: 50%; 
@@ -41,14 +43,14 @@ body
 .dashboard_item > h4
 { 
     margin: 0;
-    border-bottom: 1px solid rgb(255, 238, 3); 
+    border-bottom: 1px solid rgb(3, 255, 221); 
     width: 100%;
 }
 .dashboard_item > p
 { 
     font-size: 20px; 
     margin: 0; 
-    color: rgb(251, 54, 5); 
+    color: rgb(239, 251, 5); 
     font-weight: bold; 
 } 
 .mqttConnected 
@@ -75,4 +77,16 @@ body
     border-radius: 20px;
     /* opacity: 80%; */
 }
+.highcharts-figure
+{
+    /* width: 250px; */
+    padding: 20px;
+    /* border-radius: 20px; */
+    /* display: flex; */
+    /* flex-direction: column;  */
+    /* justify-content: center;  */
+    align-items: center; 
+    box-shadow: 0 1px 30px rgba(2, 1, 1, 0.934), 0 5px 20px rgba(0,0,0,0.24); 
+
+} 
 

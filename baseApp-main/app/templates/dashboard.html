@@ -14,14 +14,13 @@
 
 {% block main %}
 
-<figure class="highcharts-figure"> 
-    <div id="livedata"></div> 
-</figure>
+
 
 <div class="dashboardblock">
     <div class="header"> 
         <h1>Home Automation Dashboard</h1>
         </div> 
+        
         <hr> 
         <div id="messages">
 
@@ -29,14 +28,15 @@
         <div id="status"></div>
         <hr> 
         
-
-        <div class="controls">
+        
+        <!-- <div class="controls"> -->
+            
             <h1>Controls</h1>
             <ul class="dashboard"> 
         
             <li class="dashboard_item kitchen"> 
                 <h4>Kitchen</h4>
-                <button>Toggle</button>
+                <button>Switch</button>
                 <img src="{{url_for('static',filename='images/bulboff.png')}}" alt="" 
                 width = "50"
                 height="60"/>
@@ -46,7 +46,7 @@
 
             <li class = "dashboard_item bathroom">
                 <h4>Bathroom</h4>
-                <button>Toggle</button>
+                <button>Switch</button>
                 <img src="{{url_for('static',filename='images/bulboff.png')}}" alt=""  
                 width = "50"
                 height="60"/>
@@ -55,7 +55,7 @@
 
             <li class="dashboard_item livingroom"> 
                 <h4>LivingRoom</h4> 
-                <button>Toggle</button>
+                <button>Switch</button>
                 <img src="{{url_for('static',filename='images/bulboff.png')}}" alt=""  
                 width = "50"
                 height="60"/>
@@ -64,7 +64,7 @@
 
             <li class="dashboard_item hall"> 
                 <h4>Hall</h4>
-                <button>Toggle</button>
+                <button>Switch</button>
                 <img src="{{url_for('static',filename='images/bulboff.png')}}" alt="" 
                 width = "50"
                 height="60"/>
@@ -73,7 +73,7 @@
 
             <li class="dashboard_item studyRoom"> 
                 <h4>StudyRoom</h4>
-                <button>Toggle</button>
+                <button>Switch</button>
                 <img src="{{url_for('static',filename='images/bulboff.png')}}" alt="" 
                 width = "50"
                 height="60"/>
@@ -82,7 +82,7 @@
 
             <div class="dashboard_item bedRoom"> 
                 <h4>BedRoom</h4> 
-                <button>Toggle</button>
+                <button>Switch</button>
                 <img src="{{url_for('static',filename='images/bulboff.png')}}" alt=""  
                 width = "50"
                 height="60"/>
@@ -92,7 +92,7 @@
 
 
                 <li class="dashboard_item frontdoor"> 
-                <h3>Front Door</h3> 
+                <h4>Front Door</h4> 
                 <img src="{{url_for('static',filename='images/doorclosed.png')}}" alt="" 
                 width = "45"
                 height="50"/>
@@ -101,25 +101,29 @@
 
             <li class="dashboard_item balcony_door"> 
                 
-                    <h3>Balcony Door</h3> 
+                    <h5>Balcony Door</h5> 
                     <img src="{{url_for('static',filename='images/doorclosed.png')}}" alt=""
                     width = "45"
                     height="50"/>
                     <p></p> 
                     </li> 
 
-            </ul> 
+            <!-- </ul>  -->
             
     </div>
+    <figure class="highcharts-figure"> 
+        <div id="livedata"></div> 
+    </figure>
     <div class="date"><span>Start</span> 
         <input id="start" type="date" placeholder="Start"> 
         <span>End</span> 
         <input id="end" type="date" placeholder="End"> 
         <button class="plot">Plot</button>
+        <figure class="highcharts-figure"> 
+            <div id="container"></div> 
+        </figure>
     </div> 
-    <figure class="highcharts-figure"> 
-        <div id="container"></div> 
-    </figure>
+   
 </div>
 
 {% endblock %}
