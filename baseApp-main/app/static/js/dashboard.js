@@ -5,7 +5,7 @@ window.onload = (event) => {
   var mqtt;
   var connected_flag      =  0	
   var reconnectTimeout    = 2000;  
-  var pubtopic            = "620108055_lab3";       //Replace with your ID number ex. 620012345_lab3  
+  var pubtopic            = "620108055_lab5";       //Replace with your ID number ex. 620012345_lab3  
   var subtopic            = "620108055";            //Replace with your ID number ex. 620012345. MQTT topic for subscribing to
   var host                = "www.yanacreations.com";  // MQTT HOST
   var port                = 8883;                     // MQTT Port
@@ -61,7 +61,7 @@ window.onload = (event) => {
     let starttime = new Date(start.value).getTime() / 1000; 
     let endtime = new Date(end.value).getTime() / 1000; 
     // Request data from server 
-    const URL = `/data?start=${starttime}&end=${endtime}&variable=TEMPERATURE`; 
+    const URL = `/data?start=${starttime}&end=${endtime}&variable=OUTTEMP`; 
     const response = await fetch(URL); 
     if(response.ok){ 
       let res = await response.json(); 
@@ -240,16 +240,8 @@ window.onload = (event) => {
         // Convert message received to json object
         let mssg  = JSON.parse(r_message.payloadString); 
 
-        let timestamp = mssg.TIMESTAMP; 
-        let temperature = mssg.TEMPERATURE; 
-        if(limit > 0){ 
-          liveGraph.series[0].addPoint({y:parseFloat(temperature) ,x:((parseInt(timestamp) - 18000 )*1000) }, true, false); 
-          limit--; 
-        } 
-        else
-        { 
-          liveGraph.series[0].addPoint({y:parseFloat(temperature) ,x:((parseInt(timestamp) - 18000 )*1000) }, true, true); 
-        }
+        
+        
         // Print json message to console(View in Browser Dev Tools)
         console.log(mssg); 
 
@@ -326,16 +318,28 @@ window.onload = (event) => {
           }
           
 
-          balconydoorCard.innerHTML = mssg.BALCONY; 
+          balconydoorCard.innerHTML = mssg.BALCONYDOOR; 
 
-          if(mssg.BALCONY == "CLOSED")
+          if(mssg.BALCONYDOOR == "CLOSED")
           {
             balconydoorCardImg.src = "../static/images/doorclosed.png";
           }
-          if(mssg.BALCONY == "OPEN")
+          if(mssg.BALCONYDOOR == "OPEN")
           // else
           {
             balconydoorCardImg.src = "../static/images/dooropen.png";
+          }
+
+          let timestamp = mssg.TIMESTAMP; 
+          let temperature = mssg.OUTTEMP; 
+
+          if(limit > 0){ 
+            liveGraph.series[0].addPoint({y:parseFloat(temperature) ,x:((parseInt(timestamp) - 18000 )*1000) }, true, false); 
+            limit--; 
+          } 
+          else
+          { 
+            liveGraph.series[0].addPoint({y:parseFloat(temperature) ,x:((parseInt(timestamp) - 18000 )*1000) }, true, true); 
           }
         }
       

@@ -12,7 +12,7 @@ from flask import render_template, request, redirect, url_for, flash,  session, 
 from werkzeug.utils import secure_filename 
 from werkzeug.security import check_password_hash
 from .function import DB, Mqtt
-# mongo = DB(Config) 
+mongo = DB(Config) 
 
 ###
 # Routing for your application.
