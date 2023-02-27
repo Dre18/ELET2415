@@ -206,8 +206,8 @@ def main():
     # pubsub = Mqtt("/sensor/data","www.yanacreations.com",1883)
     one = DB(Config)
     one.plotStaticGraph("TEMPERATURE",1675365754,1675368174)
-    # timestamp = floor(time())
-    # registered = ctime(timestamp)
+    timestamp = floor(time())
+    registered = ctime(timestamp)
     # print(f"DB Connected : {one.testConnection()}")
   
      

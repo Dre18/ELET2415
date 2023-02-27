@@ -1,6 +1,6 @@
 body 
 { 
-    background-color: #23b0ec56; 
+    background-color: #66c7f0d4; 
     
     text-align: center; 
     font-family: 'Roboto', sans-serif; 
@@ -8,7 +8,7 @@ body
 } 
 .header
 { 
-    background-color: rgba(7, 204, 253, 0.471); 
+    background-color: rgba(86, 190, 216, 0.526); 
     height: 100px; 
     display: flex; 
     justify-content: center; 
@@ -50,7 +50,7 @@ body
 { 
     font-size: 20px; 
     margin: 0; 
-    color: rgb(239, 251, 5); 
+    color: rgb(235, 251, 5); 
     font-weight: bold; 
 } 
 .mqttConnected 
